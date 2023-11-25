@@ -145,6 +145,157 @@ header {
   border: none;
 }
 
+#panelContainer {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.panel {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000000;
+  background-color: #fafafc;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+#previewBox {
+  height: 180px;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 93px;
+  /* z-index: 100; */
+  margin-left: 5%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+#previewPanel {
+  display: none;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#loader {
+  display: none;
+  gap: 20px;
+  padding: 10px;
+  align-items: center;
+}
+
+#loaderRing {
+  border: 2px solid #f3f3f3; /* Light grey */
+  border-top: 2px solid black; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#previewBtn {
+  display: none;
+  gap: 20px;
+  font-size: 36px;
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #fafafc;
+}
+
+#acceptBtn {
+  color: green;
+  cursor: pointer;
+}
+#regenerateBtn {
+  cursor: pointer;
+}
+
+#rejectBtn {
+  color: red;
+  cursor: pointer;
+}
+
+#errorSelectPanel {
+  border: 2px solid red;
+  background-color: #fcfcfa;
+  color: red;
+  padding: 10px;
+}
+
+.promptForm {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0; /* Adjust this value based on how far down you want the section to stick */
+  background-color: #fafafc; /* Add a background color for better visibility */
+  padding: 10px; /* Add padding for styling */
+  /* z-index: 100; */
+}
+
+#infoLoader {
+  display: none;
+  margin-left: 5%;
+  padding-bottom: 5px;
+  font-family: "Times New Roman", Times, serif;
+  color: gray;
+}
+
+#comicForm {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  width: 75%;
+  padding: 20px;
+}
+
+#generateBtn {
+  background-color: #ff0303;
+  color: #fcfcfa;
+  border: 1px solid black;
+  border-left: none;
+  padding: 20px;
+  cursor: pointer;
+}
+#addTextBtn {
+  background-color: rgb(255, 106, 0);
+  color: #fcfcfa;
+  border: 1px solid black;
+  border-left: none;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.highlight {
+  border: 2px solid #ff0000;
+  box-shadow: 10px 10px 5px rgba(251, 76, 76, 0.2);
+}
+
+.caption {
+  border-bottom: 1px solid black;
+  padding: 2px;
+  background-color: #fafafc;
+}
+
 @media (max-width: 1000px) {
   .modal {
     width: 80%;
