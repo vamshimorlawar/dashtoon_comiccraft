@@ -77,49 +77,6 @@
         <a href="./app.html"> Try ComicCraft</a>
       </div>
     </div>
-    <script>
-      const placeholderImages = [
-        "Panel 1",
-        "Panel 2",
-        "Panel 3",
-        "Panel 4",
-        "Panel 5",
-        "Panel 6",
-        "Panel 7",
-        "Panel 8",
-        "Panel 9",
-        "Panel 10",
-      ];
-
-      let selectedPanelIndex = null;
-      let selectedCaptionIndex = null;
-      let isImageGenerated = false;
-      let isCaptionAdded = false;
-
-      const panelContainer = document.getElementById("panelContainer");
-      const comicForm = document.getElementById("comicForm");
-
-      comicForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        generateImage(event);
-      });
-
-      comicForm.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-          generateImage(event);
-        }
-      });
-
-      for (let i = 0; i < placeholderImages.length; i++) {
-        const panel = document.createElement("div");
-        panel.classList.add("panel");
-        const caption = document.createElement("div");
-        caption.classList.add("caption");
-        caption.textContent = placeholderImages[i];
-        panel.addEventListener("click", () => handlePanelClick(i));
-        panelContainer.appendChild(panel);
-        panel.appendChild(caption);
-      }
-    </script>
+    
   </body>
 </html>
