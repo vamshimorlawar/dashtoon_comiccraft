@@ -82,6 +82,7 @@ header {
 
 .appTitle a {
   text-decoration: none;
+  color: #111111;
 }
 
 .options {
@@ -134,7 +135,7 @@ header {
 .instruction-content {
   margin-bottom: 10px;
   letter-spacing: 0.8px;
-  color: rgb(154, 154, 154);
+  color: #9a9a9a;
 }
 
 .closeBtn {
@@ -197,7 +198,7 @@ header {
 
 #loaderRing {
   border: 2px solid #f3f3f3; /* Light grey */
-  border-top: 2px solid black; /* Blue */
+  border-top: 2px solid #000000; /* Blue */
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -216,6 +217,8 @@ header {
 .previewOptions {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
 }
 #previewBtn {
   display: none;
@@ -227,7 +230,7 @@ header {
 }
 
 #acceptBtn {
-  color: green;
+  color: #008000;
   cursor: pointer;
 }
 #regenerateBtn {
@@ -235,14 +238,14 @@ header {
 }
 
 #rejectBtn {
-  color: red;
+  color: #ff0000;
   cursor: pointer;
 }
 
 #errorSelectPanel {
-  border: 2px solid red;
+  border: 2px solid #ff0000;
   background-color: #fcfcfa;
-  color: red;
+  color: #ff0000;
   padding: 10px;
 }
 
@@ -260,7 +263,7 @@ header {
   margin-left: 5%;
   padding-bottom: 5px;
   font-family: "Times New Roman", Times, serif;
-  color: gray;
+  color: #808080;
 }
 
 #comicForm {
@@ -276,13 +279,13 @@ input {
 #generateBtn {
   background-color: #ff0303;
   color: #fcfcfa;
-  border: 1px solid black;
+  border: 1px solid #000000;
   border-left: none;
   padding: 20px;
   cursor: pointer;
 }
 #addTextBtn {
-  background-color: rgb(255, 106, 0);
+  background-color: #ff6a00;
   color: #fcfcfa;
   border: 1px solid black;
   border-left: none;
@@ -296,7 +299,7 @@ input {
 }
 
 .caption {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000000;
   padding: 2px;
   background-color: #fafafc;
 }
