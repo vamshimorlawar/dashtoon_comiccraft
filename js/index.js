@@ -7,7 +7,6 @@ function handlePanelClick(index) {
   const selectedPanel = document.getElementsByClassName("panel")[index];
   const errorSelectPanel = document.getElementById("errorSelectPanel");
   errorSelectPanel.style.display = "none";
-  const selectedCaption = document.getElementsByClassName("caption")[index];
   selectedPanel.classList.add("highlight");
 
   selectedPanelIndex = index;
