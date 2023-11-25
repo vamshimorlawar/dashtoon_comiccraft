@@ -55,119 +55,140 @@ async function callAPI(data) {
 }
 
 async function generateImage(event) {
-    event.preventDefault();
-  
-    const previewPanel = document.getElementById("previewPanel");
-    const previewBtn = document.getElementById("previewBtn");
-    const generateBtn = document.getElementById("generateBtn");
-    const loader = document.getElementById("loader");
-    const infoLoader = document.getElementById("infoLoader");
-    const errorSelectPanel = document.getElementById("errorSelectPanel");
-    
-    previewPanel.style.display = "none";
-    previewBtn.style.display = "none";
-    
-    errorSelectPanel.style.display = "none";
-    
-    generateBtn.disabled = true;
-    generateBtn.style.cursor = "not-allowed";
-    generateBtn.style.color = "#fa6b6b";
-  
-    loader.style.display = "flex";
-    loader.style.backgroundColor = "white";
-  
-    infoLoader.style.display = "flex";
-  
-    const textInputValue = document.getElementById("textInput").value;
-    const result = await callAPI({ inputs: textInputValue });
-  
-    if(result.success){
-      previewPanel.innerHTML = `<img src="${URL.createObjectURL(
-        result.data
-      )}" alt="Generated Image" height="150px" width="150px">`;
-    
-      previewPanel.style.display = "block";
-      previewPanel.style.backgroundColor = "white";
-      previewBtn.style.display = "flex";
-    
-      generateBtn.disabled = false;
-      generateBtn.style.cursor = "pointer";
-      generateBtn.style.color = "#fcfcfa";
-    
-      loader.style.display = "none";
-      loader.style.backgroundColor = "unset";
-      
-      infoLoader.style.display = "none";
-    
-      isImageGenerated = true;
-    }else{
-      errorSelectPanel.style.display = "block";
-      errorSelectPanel.textContent = `${result.data}`;
-    }
-  }
+  event.preventDefault();
 
-  function addText(event) {
-    event.preventDefault();
-    const errorSelectPanel = document.getElementById("errorSelectPanel");
-  
-    if (selectedPanelIndex != null) {
-      errorSelectPanel.style.display = "none";
-      const selectedPanel = document.getElementsByClassName("panel")[selectedPanelIndex];
-      const selectedCaption = document.getElementsByClassName("caption")[selectedCaptionIndex];
-      const textInputValue = document.getElementById("textInput").value;
-      
-      selectedCaption.textContent = textInputValue;
-      selectedPanel.classList.remove("highlight");
-      selectedPanelIndex = null;
-    } else {
-      errorSelectPanel.style.display = "block";
-      errorSelectPanel.textContent = "Please select a panel to add";
-    }
-  }
+  const previewPanel = document.getElementById("previewPanel");
+  const previewBtn = document.getElementById("previewBtn");
+  const generateBtn = document.getElementById("generateBtn");
+  const loader = document.getElementById("loader");
+  const infoLoader = document.getElementById("infoLoader");
+  const errorSelectPanel = document.getElementById("errorSelectPanel");
 
-  function acceptPreview() {
-    const errorSelectPanel = document.getElementById("errorSelectPanel");
-    const previewPanel = document.getElementById("previewPanel");
-    const previewBtn = document.getElementById("previewBtn");
-    if (selectedPanelIndex != null) {
-      errorSelectPanel.style.display = "none";
-      const selectedPanel =
-        document.getElementsByClassName("panel")[selectedPanelIndex];
-      selectedPanel.style.backgroundImage = `url("${
-        document.getElementById("previewPanel").firstElementChild.src
-      }")`;
-      selectedPanel.classList.remove("highlight");
-      
-      previewPanel.style.display = "none";
-      previewPanel.style.backgroundColor = "unset";
-      
-      selectedPanelIndex = null;
-      pre.style.display = "none";
-      isImageGenerated = false;
-    } else {
-      errorSelectPanel.style.display = "block";
-      errorSelectPanel.textContent = "Please select a panel to add image";
-    }
-  }
-  
-  function rejectPreview() {
-    const previewPanel = document.getElementById("previewPanel");
-    const errorSelectPanel = document.getElementById("errorSelectPanel");
-    const previewBtn = document.getElementById("previewBtn");
-    const generateBtn = document.getElementById("generateBtn");
-  
-    previewPanel.style.display = "none";
-    errorSelectPanel.style.display = "none";
-    previewBtn.style.display = "none";
+  previewPanel.style.display = "none";
+  previewBtn.style.display = "none";
+
+  errorSelectPanel.style.display = "none";
+
+  generateBtn.disabled = true;
+  generateBtn.style.cursor = "not-allowed";
+  generateBtn.style.color = "#fa6b6b";
+
+  loader.style.display = "flex";
+  loader.style.backgroundColor = "white";
+
+  infoLoader.style.display = "flex";
+
+  const textInputValue = document.getElementById("textInput").value;
+  const result = await callAPI({ inputs: textInputValue });
+
+  if (result.success) {
+    previewPanel.innerHTML = `<img src="${URL.createObjectURL(
+      result.data
+    )}" alt="Generated Image" height="150px" width="150px">`;
+
+    previewPanel.style.display = "block";
+    previewPanel.style.backgroundColor = "white";
+    previewBtn.style.display = "flex";
+
     generateBtn.disabled = false;
-  
-    if (selectedPanelIndex) {
-      const selectedPanel =
-        document.getElementsByClassName("panel")[selectedPanelIndex];
-      selectedPanel.classList.remove("highlight");
-    }
+    generateBtn.style.cursor = "pointer";
+    generateBtn.style.color = "#fcfcfa";
+
+    loader.style.display = "none";
+    loader.style.backgroundColor = "unset";
+
+    infoLoader.style.display = "none";
+
+    isImageGenerated = true;
+  } else {
+    errorSelectPanel.style.display = "block";
+    errorSelectPanel.textContent = `${result.data}`;
+  }
+}
+
+function addText(event) {
+  event.preventDefault();
+  const errorSelectPanel = document.getElementById("errorSelectPanel");
+
+  if (selectedPanelIndex != null) {
+    errorSelectPanel.style.display = "none";
+    const selectedPanel =
+      document.getElementsByClassName("panel")[selectedPanelIndex];
+    const selectedCaption =
+      document.getElementsByClassName("caption")[selectedCaptionIndex];
+    const textInputValue = document.getElementById("textInput").value;
+
+    selectedCaption.textContent = textInputValue;
+    selectedPanel.classList.remove("highlight");
     selectedPanelIndex = null;
+  } else {
+    errorSelectPanel.style.display = "block";
+    errorSelectPanel.textContent = "Please select a panel to add";
+  }
+}
+
+function acceptPreview() {
+  const errorSelectPanel = document.getElementById("errorSelectPanel");
+  const previewPanel = document.getElementById("previewPanel");
+  const previewBtn = document.getElementById("previewBtn");
+  if (selectedPanelIndex != null) {
+    errorSelectPanel.style.display = "none";
+    const selectedPanel =
+      document.getElementsByClassName("panel")[selectedPanelIndex];
+    selectedPanel.style.backgroundImage = `url("${
+      document.getElementById("previewPanel").firstElementChild.src
+    }")`;
+    selectedPanel.classList.remove("highlight");
+
+    previewPanel.style.display = "none";
+    previewPanel.style.backgroundColor = "unset";
+
+    selectedPanelIndex = null;
+    pre.style.display = "none";
     isImageGenerated = false;
+  } else {
+    errorSelectPanel.style.display = "block";
+    errorSelectPanel.textContent = "Please select a panel to add image";
+  }
+}
+
+function rejectPreview() {
+  const previewPanel = document.getElementById("previewPanel");
+  const errorSelectPanel = document.getElementById("errorSelectPanel");
+  const previewBtn = document.getElementById("previewBtn");
+  const generateBtn = document.getElementById("generateBtn");
+
+  previewPanel.style.display = "none";
+  errorSelectPanel.style.display = "none";
+  previewBtn.style.display = "none";
+  generateBtn.disabled = false;
+
+  if (selectedPanelIndex) {
+    const selectedPanel =
+      document.getElementsByClassName("panel")[selectedPanelIndex];
+    selectedPanel.classList.remove("highlight");
+  }
+  selectedPanelIndex = null;
+  isImageGenerated = false;
+}
+
+function downloadPdf(event) {
+    event.preventDefault();
+    // Specify the container element you want to convert to PDF
+    const comicStripContainer = document.getElementById("panelContainer");
+    // Wait for all images to be loaded before generating the PDF
+    html2canvas(comicStripContainer, {
+      allowTaint: true,
+    }).then(function (canvas) {
+      var imgData = canvas.toDataURL("image/jpeg, 1.0");
+      if (canvas.width > canvas.height) {
+        doc = new jspdf.jsPDF("l", "mm", [canvas.width, canvas.height]);
+      } else {
+        doc = new jspdf.jsPDF("p", "mm", [canvas.height, canvas.width]);
+      }
+      doc.addImage(imgData, "png", 10, 10, canvas.width, canvas.height);
+      doc.save("comiccraft.pdf");
+    });
   }
 
 function openModal() {
