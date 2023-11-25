@@ -54,6 +54,58 @@ async function callAPI(data) {
   }
 }
 
+async function generateImage(event) {
+    event.preventDefault();
+  
+    const previewPanel = document.getElementById("previewPanel");
+    const previewBtn = document.getElementById("previewBtn");
+    const generateBtn = document.getElementById("generateBtn");
+    const loader = document.getElementById("loader");
+    const infoLoader = document.getElementById("infoLoader");
+    const errorSelectPanel = document.getElementById("errorSelectPanel");
+    
+    previewPanel.style.display = "none";
+    previewBtn.style.display = "none";
+    
+    errorSelectPanel.style.display = "none";
+    
+    generateBtn.disabled = true;
+    generateBtn.style.cursor = "not-allowed";
+    generateBtn.style.color = "#fa6b6b";
+  
+    loader.style.display = "flex";
+    loader.style.backgroundColor = "white";
+  
+    infoLoader.style.display = "flex";
+  
+    const textInputValue = document.getElementById("textInput").value;
+    const result = await callAPI({ inputs: textInputValue });
+  
+    if(result.success){
+      previewPanel.innerHTML = `<img src="${URL.createObjectURL(
+        result.data
+      )}" alt="Generated Image" height="150px" width="150px">`;
+    
+      previewPanel.style.display = "block";
+      previewPanel.style.backgroundColor = "white";
+      previewBtn.style.display = "flex";
+    
+      generateBtn.disabled = false;
+      generateBtn.style.cursor = "pointer";
+      generateBtn.style.color = "#fcfcfa";
+    
+      loader.style.display = "none";
+      loader.style.backgroundColor = "unset";
+      
+      infoLoader.style.display = "none";
+    
+      isImageGenerated = true;
+    }else{
+      errorSelectPanel.style.display = "block";
+      errorSelectPanel.textContent = `${result.data}`;
+    }
+  }
+
 function openModal() {
   // Display the overlay and modal
   document.getElementById("overlay").style.display = "flex";
