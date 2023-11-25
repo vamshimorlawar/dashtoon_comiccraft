@@ -106,6 +106,25 @@ async function generateImage(event) {
     }
   }
 
+  function addText(event) {
+    event.preventDefault();
+    const errorSelectPanel = document.getElementById("errorSelectPanel");
+  
+    if (selectedPanelIndex != null) {
+      errorSelectPanel.style.display = "none";
+      const selectedPanel = document.getElementsByClassName("panel")[selectedPanelIndex];
+      const selectedCaption = document.getElementsByClassName("caption")[selectedCaptionIndex];
+      const textInputValue = document.getElementById("textInput").value;
+      
+      selectedCaption.textContent = textInputValue;
+      selectedPanel.classList.remove("highlight");
+      selectedPanelIndex = null;
+    } else {
+      errorSelectPanel.style.display = "block";
+      errorSelectPanel.textContent = "Please select a panel to add";
+    }
+  }
+
 function openModal() {
   // Display the overlay and modal
   document.getElementById("overlay").style.display = "flex";
