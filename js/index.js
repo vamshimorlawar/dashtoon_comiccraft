@@ -143,6 +143,8 @@ function acceptPreview() {
     previewPanel.style.display = "none";
     previewPanel.style.backgroundColor = "unset";
 
+    previewBtn.style.display = "none";
+
     selectedPanelIndex = null;
     pre.style.display = "none";
     isImageGenerated = false;
