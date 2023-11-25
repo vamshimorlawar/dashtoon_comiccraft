@@ -69,6 +69,7 @@ async function generateImage(event) {
   errorSelectPanel.style.display = "none";
 
   generateBtn.disabled = true;
+  processingImage = true;
   generateBtn.style.cursor = "not-allowed";
   generateBtn.style.color = "#fa6b6b";
 
@@ -90,6 +91,7 @@ async function generateImage(event) {
     previewBtn.style.display = "flex";
 
     generateBtn.disabled = false;
+    processingImage = false;
     generateBtn.style.cursor = "pointer";
     generateBtn.style.color = "#fcfcfa";
 
@@ -145,7 +147,6 @@ function acceptPreview() {
     previewBtn.style.display = "none";
 
     selectedPanelIndex = null;
-    pre.style.display = "none";
     isImageGenerated = false;
   } else {
     errorSelectPanel.style.display = "block";

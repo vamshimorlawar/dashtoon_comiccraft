@@ -213,6 +213,10 @@ header {
   }
 }
 
+.previewOptions {
+    display: flex;
+    flex-wrap: wrap;
+}
 #previewBtn {
   display: none;
   gap: 20px;
