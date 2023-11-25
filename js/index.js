@@ -125,6 +125,51 @@ async function generateImage(event) {
     }
   }
 
+  function acceptPreview() {
+    const errorSelectPanel = document.getElementById("errorSelectPanel");
+    const previewPanel = document.getElementById("previewPanel");
+    const previewBtn = document.getElementById("previewBtn");
+    if (selectedPanelIndex != null) {
+      errorSelectPanel.style.display = "none";
+      const selectedPanel =
+        document.getElementsByClassName("panel")[selectedPanelIndex];
+      selectedPanel.style.backgroundImage = `url("${
+        document.getElementById("previewPanel").firstElementChild.src
+      }")`;
+      selectedPanel.classList.remove("highlight");
+      
+      previewPanel.style.display = "none";
+      previewPanel.style.backgroundColor = "unset";
+      
+      selectedPanelIndex = null;
+      pre.style.display = "none";
+      isImageGenerated = false;
+    } else {
+      errorSelectPanel.style.display = "block";
+      errorSelectPanel.textContent = "Please select a panel to add image";
+    }
+  }
+  
+  function rejectPreview() {
+    const previewPanel = document.getElementById("previewPanel");
+    const errorSelectPanel = document.getElementById("errorSelectPanel");
+    const previewBtn = document.getElementById("previewBtn");
+    const generateBtn = document.getElementById("generateBtn");
+  
+    previewPanel.style.display = "none";
+    errorSelectPanel.style.display = "none";
+    previewBtn.style.display = "none";
+    generateBtn.disabled = false;
+  
+    if (selectedPanelIndex) {
+      const selectedPanel =
+        document.getElementsByClassName("panel")[selectedPanelIndex];
+      selectedPanel.classList.remove("highlight");
+    }
+    selectedPanelIndex = null;
+    isImageGenerated = false;
+  }
+
 function openModal() {
   // Display the overlay and modal
   document.getElementById("overlay").style.display = "flex";
