@@ -21,3 +21,7 @@ Develop a simple web application that allows users to create and share a 10-pane
 ### **Deliverables:**
 
 - A deployed web app on a URL is best. If thats not possible then submit a github URL with code.
+
+### **Techstack:**
+
+- HTML, CSS, JS, Google Fonts, html2canvas, jspdf
