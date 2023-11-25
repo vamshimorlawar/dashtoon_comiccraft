@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: #262626;
+    min-height: 100vh;
+    font-family: "bangers";
+    background-color: #fafafc;
+    background-image: url("../images/hero.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    flex-wrap: wrap;
+    font-size: 24px;
+    min-height: 100vh;
+  }
+  
+  .profile  {
+    display: flex;
+    background-color: #fcfcfa;
+    padding: 40px;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .avatar img {
+    width: 200px;
+    height: 200px;
+  } 
+  .assignment {
+    background-color: #ff0303;
+    box-shadow: 10px 10px 5px rgba(251, 76, 76, 0.2);
+    padding: 40px;
+  }
+  
+  .assignment a {
+    text-decoration: none;
+    color: #fcfcfa;
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .socials {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  
+  button, input {
+    font-family: "bangers";
+    font-size: 16px;
+  }
