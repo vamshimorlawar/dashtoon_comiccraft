@@ -138,6 +138,10 @@ header {
   color: #9a9a9a;
 }
 
+.example {
+  width: 100%;
+}
+
 .closeBtn {
   background-color: #f53c3c;
   color: #fcfcfa;
