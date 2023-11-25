@@ -63,3 +63,31 @@ body {
     font-family: "bangers";
     font-size: 16px;
   }
+
+  header {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dbdbdb;
+    background-color: #fcfcfa;
+  }
+  
+  .appTitle {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .appTitle a {
+    text-decoration: none;
+  }
+
+  .options {
+    display: flex;
+    gap: 20px;
+  }
+
+  #downloadBtn,
+#guidelines {
+  cursor: pointer;
+}
