@@ -30,63 +30,115 @@
   </head>
   <body>
     <header>
-        <div class="appTitle"><a href="./index.html">ComicCraft</a></div>
-        
-        <div class="options">
-          <div id="downloadBtn" onclick="downloadPdf(event)">
-            <i class="fa-solid fa-file-arrow-down"></i> Download as PDF
-          </div>
-          <div id="guidelines" onclick="openModal()">
-            <i class="fa-solid fa-circle-info"></i> Guidelines
-          </div>
-        </div>
-      </header>
+      <div class="appTitle"><a href="./index.html">ComicCraft</a></div>
 
-      <div id="overlay" class="overlay">
-        <div id="modal" class="modal">
-          <h3>Guidelines</h3>
-          <div>
-            <div class="instruction-section">
-              <div class="instruction-heading">Getting Started:</div>
-              <p class="instruction-content">
-                1. Enter your prompt in the input box below.
-                <br>2. Click "Generate" to create your image.
-                <br>3. Once the image is generated, you'll find three buttons:
-                <br>   - <strong>Accept:</strong> Click on a panel to place the image there.
-                <br>   - <strong>Regenerate:</strong> Create a new image for the same prompt.
-                <br>   - <strong>Reject:</strong> Dismiss the image and generate a new one.
-              </p>
-            </div>
-            
-            <div class="instruction-section">
-              <div class="instruction-heading">Adding Captions:</div>
-              <p class="instruction-content">
-                1. Enter your dialogues in the input box below.
-                <br>2. Click "Add Text" and select a panel to place your caption.
-                <br>3. You can click on the same box to edit your dialogue.
-              </p>
-            </div>
-            
-            <div class="instruction-section">
-              <div class="instruction-heading">Downloading and Sharing:</div>
-              <p class="instruction-content">
-                1. Click the download button in the header to download your comic in PDF format.
-              </p>
-            </div>
-  
-            <div class="instruction-section">
-              <div class="instruction-heading">Caution:</div>
-              <p class="instruction-content">
-                1. Refresh will cause loosing you progress.
-              </p>
-            </div>
-          </div>
-          
-          <button class="closeBtn" onclick="closeModal()">Close</button>
+      <div class="options">
+        <div id="downloadBtn" onclick="downloadPdf(event)">
+          <i class="fa-solid fa-file-arrow-down"></i> Download as PDF
+        </div>
+        <div id="guidelines" onclick="openModal()">
+          <i class="fa-solid fa-circle-info"></i> Guidelines
         </div>
       </div>
+    </header>
 
-      <section id="panelContainer"></section>
+    <div id="overlay" class="overlay">
+      <div id="modal" class="modal">
+        <h3>Guidelines</h3>
+        <div>
+          <div class="instruction-section">
+            <div class="instruction-heading">Getting Started:</div>
+            <p class="instruction-content">
+              1. Enter your prompt in the input box below.
+              <br />2. Click "Generate" to create your image. <br />3. Once the
+              image is generated, you'll find three buttons: <br />
+              - <strong>Accept:</strong> Click on a panel to place the image
+              there. <br />
+              - <strong>Regenerate:</strong> Create a new image for the same
+              prompt. <br />
+              - <strong>Reject:</strong> Dismiss the image and generate a new
+              one.
+            </p>
+          </div>
+
+          <div class="instruction-section">
+            <div class="instruction-heading">Adding Captions:</div>
+            <p class="instruction-content">
+              1. Enter your dialogues in the input box below.
+              <br />2. Click "Add Text" and select a panel to place your
+              caption. <br />3. You can click on the same box to edit your
+              dialogue.
+            </p>
+          </div>
+
+          <div class="instruction-section">
+            <div class="instruction-heading">Downloading and Sharing:</div>
+            <p class="instruction-content">
+              1. Click the download button in the header to download your comic
+              in PDF format.
+            </p>
+          </div>
+
+          <div class="instruction-section">
+            <div class="instruction-heading">Caution:</div>
+            <p class="instruction-content">
+              1. Refresh will cause loosing you progress.
+            </p>
+          </div>
+        </div>
+
+        <button class="closeBtn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <section id="panelContainer"></section>
+
+    <section id="previewBox">
+      <div id="previewPanel"></div>
+      <div id="loader">
+        <div id="loaderRing"></div>
+        Generating your image...
+      </div>
+
+      <div id="previewBtn">
+        <div id="acceptBtn" onclick="acceptPreview()">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div id="regenerateBtn" onclick="generateImage(event)">
+          <img
+            src="./reload.png"
+            alt="reload"
+            srcset=""
+            height="40px"
+            width="40px"
+          />
+        </div>
+        <div id="rejectBtn" onclick="rejectPreview()">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+      </div>
+      <div id="errorSelectPanel" style="display: none"></div>
+    </section>
+
+    <section class="promptForm">
+      <div id="infoLoader">
+        You cant add text to panel until the image is prepared
+      </div>
+      <form id="comicForm">
+        <input
+          type="text"
+          id="textInput"
+          placeholder="Astronaut fighting superman on the moon"
+          required
+        />
+        <button type="button" onclick="generateImage(event)" id="generateBtn">
+          Generate
+        </button>
+        <button type="button" onclick="addText(event)" id="addTextBtn">
+          Add Text
+        </button>
+      </form>
+    </section>
   </body>
   <script>
     const placeholderImages = [
