@@ -100,24 +100,27 @@
         Generating your image...
       </div>
 
-      <div id="previewBtn">
-        <div id="acceptBtn" onclick="acceptPreview()">
-          <i class="fa-solid fa-circle-check"></i>
+      <div class="previewOptions">
+        <div id="previewBtn">
+          <div id="acceptBtn" onclick="acceptPreview()">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div id="regenerateBtn" onclick="generateImage(event)">
+            <img
+              src="./images/reload.png"
+              alt="reload"
+              srcset=""
+              height="40px"
+              width="40px"
+            />
+          </div>
+          <div id="rejectBtn" onclick="rejectPreview()">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </div>
         </div>
-        <div id="regenerateBtn" onclick="generateImage(event)">
-          <img
-            src="./images/reload.png"
-            alt="reload"
-            srcset=""
-            height="40px"
-            width="40px"
-          />
-        </div>
-        <div id="rejectBtn" onclick="rejectPreview()">
-          <i class="fa-solid fa-circle-xmark"></i>
-        </div>
+        <div id="errorSelectPanel" style="display: none"></div>
       </div>
-      <div id="errorSelectPanel" style="display: none"></div>
+      
     </section>
 
     <section class="promptForm">
@@ -156,6 +159,7 @@
 
     let selectedPanelIndex = null;
     let selectedCaptionIndex = null;
+    let processingImage = false;
     let isImageGenerated = false;
     let isCaptionAdded = false;
 
@@ -164,12 +168,16 @@
 
     comicForm.addEventListener("submit", function (event) {
       event.preventDefault();
-      generateImage(event);
+      if(!processingImage){
+        generateImage(event);
+      }
     });
 
     comicForm.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
-        generateImage(event);
+        if(!processingImage){
+          generateImage(event);
+        }
       }
     });
 
