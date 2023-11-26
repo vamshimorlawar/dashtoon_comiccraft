@@ -254,18 +254,18 @@ header {
 }
 
 .promptForm {
-  position: -webkit-sticky;
-  position: sticky;
+  position: -webkit-fixed;
+  position: fixed;
+  width: 100%;
   bottom: 0; /* Adjust this value based on how far down you want the section to stick */
   background-color: #fafafc; /* Add a background color for better visibility */
-  padding: 10px; /* Add padding for styling */
   /* z-index: 100; */
 }
 
 #infoLoader {
   display: none;
   margin-left: 5%;
-  padding-bottom: 5px;
+  padding-top: 5px;
   font-family: "Times New Roman", Times, serif;
   color: #808080;
 }
@@ -273,6 +273,7 @@ header {
 #comicForm {
   display: flex;
   justify-content: center;
+  padding: 10px
 }
 
 input {
