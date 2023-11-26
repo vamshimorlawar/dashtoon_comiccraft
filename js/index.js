@@ -38,15 +38,15 @@ async function callAPI(data) {
     } else {
       // If response status is not within the success range, throw an error
       const errorText = await response.text();
-      throw {
+      return {
         success: false,
         error: `API request failed with status ${response.status}: ${errorText}`,
       };
     }
   } catch (error) {
     // Handle other errors (e.g., network issues)
-    console.error("Error in API request:", error.message);
-    throw {
+    // console.error("Error in API request:", error.message);
+    return {
       success: false,
       error: "Error making API request. Please try again later.",
     };
@@ -103,7 +103,18 @@ async function generateImage(event) {
     isImageGenerated = true;
   } else {
     errorSelectPanel.style.display = "block";
-    errorSelectPanel.textContent = `${result.data}`;
+    errorSelectPanel.textContent = `${result.error}`;
+    generateBtn.disabled = false;
+    processingImage = false;
+    generateBtn.style.cursor = "pointer";
+    generateBtn.style.color = "#fcfcfa";
+
+    loader.style.display = "none";
+    loader.style.backgroundColor = "unset";
+
+    infoLoader.style.display = "none";
+
+    isImageGenerated = false;
   }
 }
 
