@@ -172,9 +172,9 @@ header {
 
 #previewBox {
   height: 180px;
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 93px;
+  position: -webkit-fixed;
+  position: fixed;
+  bottom: 100px;
   /* z-index: 100; */
   margin-left: 5%;
   display: flex;
